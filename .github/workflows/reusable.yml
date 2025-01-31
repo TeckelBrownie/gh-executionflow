@@ -16,7 +16,6 @@ on:
 #          required: false
 jobs:
   deploy:
-    id: deploy
     outputs: 
       outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
@@ -28,5 +27,5 @@ jobs:
       - name: Output information
         run: echo "Deploying & Uploading"
       - name: Set result output
-        run: |
-          echo "step-result=success" >> "$GITHUB_OUTPUT"
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
